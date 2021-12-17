@@ -1,16 +1,7 @@
-import { Fragment } from 'react';
-import Cart from './components/Cart/Cart';
-import Header from './components/Layout/Header';
-import Meals from './components/Meals/Meals';
+import { Fragment, useState } from 'react';
 
 function App() {
-  return (
-    <Fragment>
-      <Cart />
-      <Header />
-      <Meals />
-    </Fragment>
-  );
+  return <Fragment>hey</Fragment>;
 }
 
 export default App;
