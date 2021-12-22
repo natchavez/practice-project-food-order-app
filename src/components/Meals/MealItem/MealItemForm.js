@@ -1,10 +1,31 @@
 import Input from '../../UI/Input';
 import classes from './MealItemForm.module.css';
+import { useRef, useState, useContext } from 'react';
 
 const MealItemForm = (props) => {
+  const [isAmountValid, setIsAmountValid] = useState(true);
+  const inputRef = useRef();
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const amountInput = inputRef.current.value;
+    const amountInputNumber = +amountInput;
+
+    if (
+      amountInput.trim().length === 0 ||
+      amountInputNumber < 1 ||
+      amountInputNumber > 5
+    ) {
+      setIsAmountValid(false);
+      return;
+    }
+
+    props.onGetAmount(amountInputNumber);
+  };
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <Input
+        ref={inputRef}
         label='Amount'
         input={{
           defaultValue: 1,
